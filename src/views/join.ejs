@@ -3,32 +3,79 @@
 
 <head>
     <title>Ok Chat | Home</title>
-   <link rel="icon" href="/img/download.png">
+    <link rel="icon" href="/img/download.png">
     <link rel='stylesheet' href="/css/styles.min.css">
-    <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js" integrity="sha384-9/D4ECZvKMVEJ9Bhr3ZnUAF+Ahlagp1cyPC7h5yDlZdXs4DQ/vRftzfd+2uFUuqS" crossorigin="anonymous"></script>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.15.1/js/all.js"
+        integrity="sha384-9/D4ECZvKMVEJ9Bhr3ZnUAF+Ahlagp1cyPC7h5yDlZdXs4DQ/vRftzfd+2uFUuqS"
+        crossorigin="anonymous"></script>
 </head>
 
 <body>
-     <h1 class="heading"><i class="fas fa-check-circle"></i> Ok Chat </h1>
-    <h1 style="display:flow-root; padding-left: 20px;">Free Chat Rooms, Chat Online With No Registration</h1>
-    <h2 style="padding-left: 20px; padding-right:20px; font-weight: normal;">This web site is an online free chat room. With us you can meet new friends from all over the world. No download, no setup & no registration needed.</h2>
+    <div class="loader-container">
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+    </div>
+
+    <h1 class="heading"><i class="fas fa-check-circle"></i> Ok Chat </h1>
+    <h1
+        style="display:flow-root;margin-left: 20px; padding: 5px; width: fit-content; color: rgb(13, 194, 185); border-radius: 3px; background-color: rgb(255, 255, 255);">
+        Free Chat Rooms, Chat Online With No Registration</h1>
+    <h2 style="padding-left: 20px; padding-right:20px; font-weight: normal;">This web site is an online free chat room.
+        With us you can meet new friends from all over the world. No download, no setup & no registration needed.</h2>
     <div class='centered-form'>
         <div class="text-content">
             <h2 style="padding: 20px ;">Friendly</h2>
-            <h3 style="font-weight:normal; padding-left: 20px;">Meet new single women and men everyday without limits, make friendships, for free you can have a live discussion now without registration!</h3>
+            <h3 style="font-weight:normal; padding-left: 20px;">Meet new single women and men everyday without limits,
+                make friendships, for free you can have a live discussion now without registration!</h3>
         </div>
-        <div class='centered-form__box'>
-            <h1>Join Now</h1>
-            <form action="/chat">
-                <label>User Name</label>
-                <input type="text" name='username' placeholder="User Name" required>
-                <label>Room</label>
-                <input type='text' name='room' placeholder="Room" required>
-                <button>Join</button>
-            </form>
+        <div class="flip-card">
+            <div class="flip-card-inner">
+                <div class="flip-card-front">
+                    <h1 class="glow">Join conversation</h1>
+                </div>
+                <div class="flip-card-back">
+                    <div class='centered-form__box'>
+                        <h1>Join Now</h1>
+                        <form action="/chat">
+                            <label>User Name</label>
+                            <input type="text" name='username' placeholder="User Name" required autocomplete="off">
+                            <label>Room</label>
+                            <input list="rooms" type='text' name='room' placeholder="Room" required autocomplete="off"
+                                dropzone="">
+                            <datalist id="rooms">
+                                <% if(rooms.length>0){ %>
+                                    <% rooms.forEach(room=> { %>
+                                        <option value="<%=room.room%>"></option>
+                                        <% }) %>
+                                            <% } %>
+                                                <option value="bvp"></option>
+                                                <option value="bvicam"></option>
+                                                <option value="trinity"></option>
+                                                <option value="st. sophia"></option>
+                                                <option value="music"></option>
+                                                <option value="series-talk"></option>
+                                                <option value="food"></option>
+                            </datalist>
+                            <button>Join</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <footer style="padding: 10px;border-radius: 5px; background-color:  rgb(72, 189, 183); color: white;"> Copyright &copy; Paras Goyal 2020</footer>
+    <footer style="padding: 10px;border-radius: 5px; background-color:  rgb(72, 189, 183); color: white;"> Copyright
+        &copy; Paras Goyal 2020</footer>
+    <script>
+        const loadercontainer = document.querySelector('.loader-container');
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                loadercontainer.classList.add('hide');
+            }, 1500)
+        })
+    </script>
 </body>
 
 </html>

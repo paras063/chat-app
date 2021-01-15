@@ -8,6 +8,12 @@
 </head>
 
 <body>
+    <div class="loader-container">
+        <div class="spinner">
+            <div class="cube1"></div>
+            <div class="cube2"></div>
+        </div>
+    </div>
     <div class='chat'>
         <div id ='sidebar' class='chat__sidebar'>
 
@@ -51,6 +57,14 @@
             <li>{{username}}</li>
         {{/users}}
     </ul>
+</script>
+<script>
+    const loadercontainer = document.querySelector('.loader-container');
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            loadercontainer.classList.add('hide');
+        }, 1500)
+    })
 </script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>

@@ -4,7 +4,7 @@ const socketio = require("socket.io");
 const app = express();
 const Filter = require("bad-words");
 const { generateMessage, generateLocation } = require("./utils/messages");
-const { getRoomUsers, getUser, addUser, removeUser } = require("./utils/users");
+const { getRoomUsers, getUser, addUser, removeUser ,users} = require("./utils/users");
 
 const port = process.env.PORT || 3000;
 const server = http.createServer(app);
@@ -14,7 +14,7 @@ app.set("views", `${__dirname}/views`);
 app.use(express.static("public"));
 
 app.get("/", (req, res) => {
-  res.render("join");
+  res.render("join",{rooms:users});
 });
 app.get("/chat", (req, res) => {
   res.render("chat");
@@ -22,7 +22,6 @@ app.get("/chat", (req, res) => {
 
 io.on("connection", (socket) => {
   console.log("new websocket connection");
-
   socket.on("join", (options, callback) => {
     const { error, user } = addUser({ id: socket.id, ...options});
     if (error) {

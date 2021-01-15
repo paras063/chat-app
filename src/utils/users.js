@@ -49,5 +49,6 @@ module.exports={
     addUser,
     removeUser,
     getRoomUsers,
-    getUser
+    getUser,
+    users : users
 }
